@@ -88,12 +88,14 @@ def Google(query):
 							"cx=017576662512468239146:omuauf_lfve&q={query}".format(
 			key=google_key, query=query)
 
-	data = requests.get(google_search_api).json()
+	data = requests.get(google_search_api)
+	src = data.text
+	obj = json.loads(src)
 	'''try:
 		google_result = requests.get(google_search_api, timeout=1).json()
 	except requests.exceptions.Timeout:
 			google_result = {'result': 0, 'message': 'Request timed out'}'''
-	final_data.put(data)
+	final_data.put(obj)
 
 
 
