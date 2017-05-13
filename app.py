@@ -18,7 +18,6 @@ consumer_key = '0fE520KzkM4qCaJcQJEAcedTC'
 consumer_secret = 'FJwilnlS7FDectu2fNhyRtj0jtfdjK9vstFs3vdHkfBRuRKMiA'
 
 
-
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(twitter_api_key, twitter_api_secret)
 api = tweepy.API(auth,
@@ -31,56 +30,22 @@ if (not api):
 	sys.exit (-1)
 
 
-#For storing the results of the three following parallel functions
+#Storing results
 final_data = Queue()		
 
 
 #DuckDuckGo instant API
 def DuckduckGo(query):
-	'''ddg_data = {
-		"duckduckgo": {
-			"url": "", 
-			"text": ""
-		 }
-	}'''
+	
 	url = "https://api.duckduckgo.com/?q=%s&format=json&pretty=1" % query 
 	duckduckgo_response = urllib.urlopen(url)
 	data = json.loads(duckduckgo_response.read())
 
-	'''try:
-		ddg_data = {
-			"duckduckgo": {
-				"url": url,
-				"text": data["AbstractText"]
-			 }
-		}
-	except Exception:
-		pass'''
 	final_data.put(data)
+	
 
 
 #Google Search API
-'''def Google(query):
-	google_data = {
-		"google": {
-			"url": "", 
-			"text": ""
-		}
-	}
-	url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s" % (google_key,google_secret,query)
-	google_response = urllib.urlopen(url)
-	data = json.loads(google_response.read())
-	try:
-		google_data = {
-			"google": {
-				"url": url,
-				"text": data["items"][0]["pagemap"]["website"][0]["description"]
-			}
-		}
-	except Exception:
-		pass
-	final_data.put(data)'''
-
 def Google(query):
 	google_result = {
 		"google": {
@@ -90,23 +55,17 @@ def Google(query):
 	}
 	google_url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s&fields=items/pagemap/website/description" % (google_key,google_secret,query)
 	google_response = urllib.urlopen(google_url)
-	temp2 = json.loads(google_response.read())
+	data = json.loads(google_response.read())
 	try:
 		google_result = {
 			"google": {
 				"url": google_url,
-				"text": temp2["items"][0]["pagemap"]["website"][0]["description"]
+				"text": data["items"][0]["pagemap"]["website"][0]["description"]
 			}
 		}
 	except Exception:
 		pass
 	final_data.put(google_result)
-
-
-
-
-
-
 
 #Twitter API
 def Twitter(query):
