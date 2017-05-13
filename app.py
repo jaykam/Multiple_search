@@ -67,7 +67,7 @@ def Google(query):
 			"text": ""
 		}
 	}'''
-	url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s&fields=items/pagemap/website/description" % (google_key,google_secret,query)
+	url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s" % (google_key,google_secret,query)
 	google_response = urllib.urlopen(url)
 	data = json.loads(google_response.read())
 	'''try:
