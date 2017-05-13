@@ -61,16 +61,16 @@ def DuckduckGo(query):
 
 #Google Search API
 '''def Google(query):
-	'''google_data = {
+	google_data = {
 		"google": {
 			"url": "", 
 			"text": ""
 		}
-	}'''
+	}
 	url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s" % (google_key,google_secret,query)
 	google_response = urllib.urlopen(url)
 	data = json.loads(google_response.read())
-	'''try:
+	try:
 		google_data = {
 			"google": {
 				"url": url,
@@ -78,7 +78,7 @@ def DuckduckGo(query):
 			}
 		}
 	except Exception:
-		pass'''
+		pass
 	final_data.put(data)'''
 
 def Google(query):
