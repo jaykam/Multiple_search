@@ -10,12 +10,12 @@ import pprint
 
 app = Flask(__name__)
 
-twitter_api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-twitter_api_secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-google_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-google_secret = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-consumer_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-consumer_secret = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+twitter_api_key = "861961251961749504-wEZ7QjmHL3YpnChut1G2xutODGEhXlT"
+twitter_api_secret = "UEvOgQ6XUZcReRh0o2H5x9i5W4kYwurCUgrqa927z8UAv"
+google_key = "AIzaSyDurizEOpoQTXcVNb-JNe4R-RoHvAw3s7k"
+google_secret = "0fE520KzkM4qCaJcQJEAcedTC"
+consumer_key = '0fE520KzkM4qCaJcQJEAcedTC'
+consumer_secret = 'FJwilnlS7FDectu2fNhyRtj0jtfdjK9vstFs3vdHkfBRuRKMiA'
 
 
 
@@ -31,6 +31,7 @@ if (not api):
 	sys.exit (-1)
 
 
+#For storing the results of the three following parallel functions
 final_data = Queue()		
 
 
@@ -45,6 +46,7 @@ def DuckduckGo(query):
 	url = "https://api.duckduckgo.com/?q=%s&format=json&pretty=1" % query 
 	duckduckgo_response = urllib.urlopen(url)
 	data = json.loads(duckduckgo_response.read())
+
 	try:
 		ddg_data = {
 			"duckduckgo": {
@@ -55,6 +57,7 @@ def DuckduckGo(query):
 	except Exception:
 		pass
 	final_data.put(ddg_data)
+
 
 #Google Search API
 def Google(query):
@@ -122,7 +125,7 @@ def index():
 			curl https://quick-search.herokuapp.com/query</p>
 			<br>
 			<br>
-			<h3><a href="https://github.com/jaykam/Multiple_search">github link code</a></h3>
+			<h3><a href="https://github.com/jaykam/Multiple_search/tree/master/Multiple-Search">github link code</a></h3>
 			<br>
 			<br>
 
