@@ -79,7 +79,7 @@ def Google(query):
 		}
 	except Exception:
 		pass'''
-	final_data.put(data)
+	final_data.put(data["items"])
 
 
 #Twitter API
