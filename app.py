@@ -10,12 +10,12 @@ import pprint
 
 app = Flask(__name__)
 
-twitter_api_key = "861961251961749504-wEZ7QjmHL3YpnChut1G2xutODGEhXlT"
-twitter_api_secret = "UEvOgQ6XUZcReRh0o2H5x9i5W4kYwurCUgrqa927z8UAv"
-google_key = "AIzaSyDurizEOpoQTXcVNb-JNe4R-RoHvAw3s7k"
-google_secret = "0fE520KzkM4qCaJcQJEAcedTC"
-consumer_key = '0fE520KzkM4qCaJcQJEAcedTC'
-consumer_secret = 'FJwilnlS7FDectu2fNhyRtj0jtfdjK9vstFs3vdHkfBRuRKMiA'
+twitter_api_key = "xxxxxxxxxxxxxxxxxxxxxx"
+twitter_api_secret = "xxxxxxxxxxxxxxxxxxx"
+google_key = "xxxxxxxxxxxxxxxx"
+google_secret = "xxxxxxxxxxxxxxx"
+consumer_key = 'xxxxxxxxxxxxxxxxxxxxxxxx'
+consumer_secret = 'xxxxxxxxxxxxxxxxxxxxxxxxx'
 
 
 
