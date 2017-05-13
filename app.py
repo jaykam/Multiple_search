@@ -37,17 +37,17 @@ final_data = Queue()
 
 #DuckDuckGo instant API
 def DuckduckGo(query):
-	ddg_data = {
+	'''ddg_data = {
 		"duckduckgo": {
 			"url": "", 
 			"text": ""
 		 }
-	}
+	}'''
 	url = "https://api.duckduckgo.com/?q=%s&format=json&pretty=1" % query 
 	duckduckgo_response = urllib.urlopen(url)
 	data = json.loads(duckduckgo_response.read())
 
-	try:
+	'''try:
 		ddg_data = {
 			"duckduckgo": {
 				"url": url,
@@ -55,22 +55,22 @@ def DuckduckGo(query):
 			 }
 		}
 	except Exception:
-		pass
-	final_data.put(ddg_data)
+		pass'''
+	final_data.put(data)
 
 
 #Google Search API
 def Google(query):
-	google_data = {
+	'''google_data = {
 		"google": {
 			"url": "", 
 			"text": ""
 		}
-	}
+	}'''
 	url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s&fields=items/pagemap/website/description" % (google_key,google_secret,query)
 	google_response = urllib.urlopen(url)
 	data = json.loads(google_response.read())
-	try:
+	'''try:
 		google_data = {
 			"google": {
 				"url": url,
@@ -78,8 +78,8 @@ def Google(query):
 			}
 		}
 	except Exception:
-		pass
-	final_data.put(google_data)
+		pass'''
+	final_data.put(data)
 
 
 #Twitter API
