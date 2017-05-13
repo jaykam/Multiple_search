@@ -82,7 +82,7 @@ def DuckduckGo(query):
 		pass'''
 	final_data.put(data)'''
 
-def Google(self, query, callback=None):
+def Google(query):
 	#google_api_key = 'AIzaSyDnbC_-OlordxU7xfpAPw2pBMkXjm6uwT4'
 	google_search_api = "https://www.googleapis.com/customsearch/v1?key={key}&" \
 							"cx=017576662512468239146:omuauf_lfve&q={query}".format(
