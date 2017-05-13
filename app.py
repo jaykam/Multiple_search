@@ -3,7 +3,6 @@ import json
 import sys
 import urllib
 import tweepy
-import requests
 from flask import Flask, jsonify
 from tweepy.parsers import JSONParser
 from multiprocessing import Process, Queue
@@ -83,19 +82,29 @@ def DuckduckGo(query):
 	final_data.put(data)'''
 
 def Google(query):
-	#google_api_key = 'AIzaSyDnbC_-OlordxU7xfpAPw2pBMkXjm6uwT4'
-	google_search_api = "https://www.googleapis.com/customsearch/v1?key={key}&" \
-							"cx=017576662512468239146:omuauf_lfve&q={query}".format(
-			key=google_key, query=query)
+	google_result = {
+		"google": {
+			"url": "", 
+			"text": ""
+		}
+	}
+	google_url = "https://www.googleapis.com/customsearch/v1?key=%s&cx=%s&q=%s&fields=items/pagemap/website/description" % (google_key,google_secret,query)
+	google_response = urllib.urlopen(google_url)
+	temp2 = json.loads(google_response.read())
+	try:
+		google_result = {
+			"google": {
+				"url": google_url,
+				"text": temp2["items"][0]["pagemap"]["website"][0]["description"]
+			}
+		}
+	except Exception:
+		pass
+	final_data.put(google_result)
 
-	data = requests.get(google_search_api)
-	src = data.text
-	obj = json.loads(src)
-	'''try:
-		google_result = requests.get(google_search_api, timeout=1).json()
-	except requests.exceptions.Timeout:
-			google_result = {'result': 0, 'message': 'Request timed out'}'''
-	final_data.put(obj)
+
+
+
 
 
 
