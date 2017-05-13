@@ -3,6 +3,7 @@ import json
 import sys
 import urllib
 import tweepy
+import requests
 from flask import Flask, jsonify
 from tweepy.parsers import JSONParser
 from multiprocessing import Process, Queue
@@ -60,7 +61,7 @@ def DuckduckGo(query):
 
 
 #Google Search API
-def Google(query):
+'''def Google(query):
 	'''google_data = {
 		"google": {
 			"url": "", 
@@ -79,7 +80,21 @@ def Google(query):
 		}
 	except Exception:
 		pass'''
+	final_data.put(data)'''
+
+def Google(self, query, callback=None):
+	#google_api_key = 'AIzaSyDnbC_-OlordxU7xfpAPw2pBMkXjm6uwT4'
+	google_search_api = "https://www.googleapis.com/customsearch/v1?key={key}&" \
+							"cx=017576662512468239146:omuauf_lfve&q={query}".format(
+			key=google_key, query=query)
+
+	data = requests.get(google_search_api).json()
+	'''try:
+		google_result = requests.get(google_search_api, timeout=1).json()
+	except requests.exceptions.Timeout:
+			google_result = {'result': 0, 'message': 'Request timed out'}'''
 	final_data.put(data)
+
 
 
 #Twitter API
