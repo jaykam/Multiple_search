@@ -125,7 +125,7 @@ def index():
 			curl https://quick-search.herokuapp.com/query</p>
 			<br>
 			<br>
-			<h3><a href="https://github.com/jaykam/Multiple_search/tree/master/Multiple-Search">github link code</a></h3>
+			<h3><a href="https://github.com/jaykam/Multiple_search/">github link code</a></h3>
 			<br>
 			<br>
 
